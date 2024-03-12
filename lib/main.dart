@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:stroll_test_first/controller/bottom_nav_controller.dart';
 import 'package:stroll_test_first/core/font_style.dart';
 import 'package:stroll_test_first/view/Home/home_screen.dart';
+import 'package:stroll_test_first/view/nav_bar/nav_bar_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,16 +17,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-          Provider<BottomNavController>(create: (_) => BottomNavController()),
+        ChangeNotifierProvider(create: (context) => BottomNavController()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           // This is the theme of your application.
-          
+
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: NavBarScreen(),
       ),
     );
   }
