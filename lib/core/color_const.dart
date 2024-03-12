@@ -6,5 +6,6 @@ class StrollColors {
   static const lightWhite = Color.fromARGB(0xCF, 0xCB, 0xFF, 0xFF);
   static const blackColor = Colors.black;
   static const whiteColor = Colors.white;
-  static const secondaryWhiteColor = Colors.white;
+  static const secondaryWhiteColor = Color(0xC4C4C4FF); 
+  static const bsIconColor = Color.fromARGB(0xFF, 0xB5, 0xB2, 0xFF);
 }
