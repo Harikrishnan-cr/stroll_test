@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stroll_test_first/controller/bottom_nav_controller.dart';
+import 'package:stroll_test_first/controller/home_controller.dart';
 import 'package:stroll_test_first/core/font_style.dart';
 import 'package:stroll_test_first/view/Home/home_screen.dart';
 import 'package:stroll_test_first/view/nav_bar/nav_bar_screen.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => BottomNavController()),
+        ChangeNotifierProvider(create: (context) => HomeController()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

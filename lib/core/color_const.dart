@@ -9,4 +9,6 @@ class StrollColors {
   static const secondaryWhiteColor = Color(0xC4C4C4FF); 
   static const quteTextColor = Color.fromRGBO(203, 201, 255, 0.7); 
   static const bsIconColor = Color.fromARGB(0xFF, 0xB5, 0xB2, 0xFF);
+  static const selectedColor =  Color.fromRGBO(139, 136, 239, 1);
+
 }

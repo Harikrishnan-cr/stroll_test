@@ -1,11 +1,12 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
+import 'package:stroll_test_first/controller/home_controller.dart';
 import 'package:stroll_test_first/core/color_const.dart';
 import 'package:stroll_test_first/core/font_style.dart';
 import 'package:stroll_test_first/core/svg_file.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -144,56 +145,76 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-
-          Expanded(child: Container(
-width: double.infinity,
+          Expanded(
+              child: Container(
+            width: double.infinity,
             color: Colors.black,
             child: Column(
-              
               children: [
                 const Gap(5),
-                Text('“Mine is definitely the peace in the morning.”',style: italicFontStyle.w400.s12.quteTextColor,),
-             GridView.count(
-              padding: EdgeInsets.zero,
-          crossAxisCount: 2,
-          childAspectRatio: (166 / 69),
-          controller:  ScrollController(keepScrollOffset: false),
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          children: answrLit.map(( value) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child:Container(
-               
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                  color: StrollColors.secondaryColor,
-              ),
-
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                
-                    Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
-                      
-                        borderRadius: BorderRadius.circular(13),
-                        border: Border.all(color: StrollColors.lightWhite,width: 1.8)
-                      ),
-                
-                      child: Text(value.option,style: fontStyle.lightWhite.w400.s12,textAlign: TextAlign.center,),
-                    ),
-                const Gap(8),
-                    Expanded(child: Text(value.answer,style: fontStyle.lightWhite.w400.s14))
-                  ],
+                Text(
+                  '“Mine is definitely the peace in the morning.”',
+                  style: italicFontStyle.w400.s12.quteTextColor,
                 ),
-              ),
-              )
-            );
-          }).toList())
+                Consumer<HomeController>(builder: (context, controller, _) {
+                  return GridView.count(
+                      padding: EdgeInsets.zero,
+                      crossAxisCount: 2,
+                      childAspectRatio: (166 / 69),
+                      controller: ScrollController(keepScrollOffset: false),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: controller.answrLit.map((value) {
+                        return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CupertinoButton(
+                              minSize: 0,
+                              padding: EdgeInsets.zero,
+                              onPressed: () {
+                                controller.onSlectedAnsChnages(
+                                    slectedAnsId: value.id);
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border:
+                                      controller.getSelectedAnser == value.id
+                                          ? Border.all(
+                                              color: StrollColors.selectedColor)
+                                          : null,
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: StrollColors.secondaryColor,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 20,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(13),
+                                            border: Border.all(
+                                                color: StrollColors.lightWhite,
+                                                width: 1.8)),
+                                        child: Text(
+                                          value.optionName,
+                                          style: fontStyle.lightWhite.w400.s12,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      const Gap(8),
+                                      Expanded(
+                                          child: Text(value.answer,
+                                              style: fontStyle
+                                                  .lightWhite.w400.s14))
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ));
+                      }).toList());
+                })
               ],
             ),
           ))
@@ -201,21 +222,4 @@ width: double.infinity,
       ),
     );
   }
-}
-
-
-final List<AnasweList> answrLit = [
-  AnasweList(answer: 'The peace in the early mornings', id: 1,option: 'A'),
-  AnasweList(answer: 'The magical golden hours', id: 1,option: 'B'),
-  AnasweList(answer: 'Wind - down time after dinners', id: 1,option: 'C'),
-  AnasweList(answer: 'The serenity past midnight', id: 1,option: 'D'),
-];
-
-
-class AnasweList{
-
-  int id;
-  String answer;
-  String option;
-  AnasweList({required this.answer,required this.id,required this.option});
 }
