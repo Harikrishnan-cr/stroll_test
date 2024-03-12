@@ -56,6 +56,8 @@ TextStyle get s7 => copyWith(fontSize: 7);
 
   ///---------Get Font Size -- End -----------------------------------------------------------------
  
+
+ 
   ///---------Get Font weight -- start -----------------------------------------------------------------
   
    TextStyle get w400 => copyWith(fontWeight: FontWeight.w400);
