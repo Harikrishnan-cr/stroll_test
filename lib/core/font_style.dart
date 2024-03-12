@@ -17,29 +17,37 @@ extension StrollTextStyl on TextStyle {
       );
 
   TextStyle get secondaryColor => copyWith(
-        color: StrollColors.primaryColor,
+        color: StrollColors.secondaryColor,
       );
 
   TextStyle get lightWhite => copyWith(
-        color: StrollColors.primaryColor,
+        color: StrollColors.lightWhite,
       );
 
   TextStyle get blackColor => copyWith(
-        color: StrollColors.primaryColor,
+        color: StrollColors.blackColor,
       );
 
   TextStyle get whiteColor => copyWith(
-        color: StrollColors.primaryColor,
+        color: StrollColors.whiteColor,
       );
 
   TextStyle get secondaryWhiteColor => copyWith(
-        color: StrollColors.primaryColor,
+        color: StrollColors.secondaryWhiteColor,
       );
 
   TextStyle get bsIconColor => copyWith(
-        color: StrollColors.primaryColor,
+        color: StrollColors.bsIconColor,
       );
 
+       TextStyle get quteTextColor => copyWith(
+        color: StrollColors.quteTextColor,
+      );
+
+
+  TextStyle get selectedColor => copyWith(
+        color: const Color.fromRGBO(139, 136, 239, 1),  
+      );
   ///---------Get colors -- End -----------------------------------------------------------------
   
 

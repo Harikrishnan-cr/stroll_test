@@ -16,11 +16,11 @@ import 'package:stroll_test_first/utils/svg_viever.dart';
 import 'package:stroll_test_first/view/Home/home_screen.dart';
 
 class NavBarScreen extends StatelessWidget {
-   NavBarScreen({super.key});
+   const NavBarScreen({super.key});
 
 
 
-  final List<Widget> _children =  [
+  final List<Widget> _children =  const [
    HomeScreen(),
     Center(child: Text('Profile')),
     Center(child: Text('Messages')),
