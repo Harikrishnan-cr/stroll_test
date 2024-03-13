@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:stroll_test_first/controller/home_controller.dart';
@@ -9,7 +8,7 @@ import 'package:stroll_test_first/core/font_style.dart';
 import 'package:stroll_test_first/core/svg_file.dart';
 import 'package:stroll_test_first/utils/png_viewer.dart';
 import 'package:stroll_test_first/utils/svg_button_widget.dart';
-import 'package:stroll_test_first/utils/svg_viever.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -51,7 +50,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Column(
-
                   children: [
                     Gap(MediaQuery.of(context).size.height * 0.167),
                     Row(
@@ -91,17 +89,22 @@ class HomeScreen extends StatelessWidget {
                         )
                       ],
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      const  CustomPngIcon(imgPath: StrolSvg.timerPng),
-                       const Gap(5),
-                        Text('22h 00m',style: fontStyle.lightWhite.w600.s12,),
-                           const  Gap(8),
-                       const CustomPngIcon(imgPath: StrolSvg.userPng),
-                       const      Gap(5),
-                        Text('103',style: fontStyle.lightWhite.w600.s12,),
+                        const CustomPngIcon(imgPath: StrolSvg.timerPng),
+                        const Gap(5),
+                        Text(
+                          '22h 00m',
+                          style: fontStyle.lightWhite.w600.s12,
+                        ),
+                        const Gap(8),
+                        const CustomPngIcon(imgPath: StrolSvg.userPng),
+                        const Gap(5),
+                        Text(
+                          '103',
+                          style: fontStyle.lightWhite.w600.s12,
+                        ),
                       ],
                     )
                   ],
@@ -149,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                                     boxShadow: const [
                                       BoxShadow(
                                         color: Color(
-                                            0x4D000000), // Color with transparency
+                                            0x4D000000), 
                                         offset: Offset(0, 14),
                                         blurRadius: 16,
                                         spreadRadius: 0,
