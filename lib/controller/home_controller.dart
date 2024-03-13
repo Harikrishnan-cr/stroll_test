@@ -8,7 +8,7 @@ class HomeController extends ChangeNotifier {
     AnserListModelClass(
         answer: 'The magical golden hours', id: 2, optionName: 'B'),
     AnserListModelClass(
-        answer: 'Wind - down time after dinners', id: 3, optionName: 'C'),
+        answer: 'Wind down time after dinners', id: 3, optionName: 'C'),
     AnserListModelClass(
         answer: 'The serenity past midnight', id: 4, optionName: 'D'),
   ];

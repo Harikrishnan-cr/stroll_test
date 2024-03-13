@@ -15,4 +15,6 @@ class StrolSvg {
   static const String userPng = 'assets/images/user_profile_svg.png';
   static const String profileSvg = 'assets/images/profile_svg.svg';
   static const String profilePng = 'assets/images/profilepng.png';
+  static const String timerPng = 'assets/images/time_png.png';
+  static const String profilesPng = 'assets/images/user_profile_svg.png';
 }

@@ -7,6 +7,9 @@ import 'package:stroll_test_first/controller/home_controller.dart';
 import 'package:stroll_test_first/core/color_const.dart';
 import 'package:stroll_test_first/core/font_style.dart';
 import 'package:stroll_test_first/core/svg_file.dart';
+import 'package:stroll_test_first/utils/png_viewer.dart';
+import 'package:stroll_test_first/utils/svg_button_widget.dart';
+import 'package:stroll_test_first/utils/svg_viever.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -31,7 +34,6 @@ class HomeScreen extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.53,
                   ),
                 ),
-                // Gradient Container
                 Positioned(
                   bottom: 0,
                   left: 0,
@@ -48,7 +50,62 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                Column(
 
+                  children: [
+                    Gap(MediaQuery.of(context).size.height * 0.167),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                blurRadius: 30.0,
+                                offset: const Offset(0, 2.0),
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            'Stroll Bonfire',
+                            style: fontStyle.w700.s34.lightWhite.copyWith(
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 30.0,
+                                  offset: const Offset(0, 2.0),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Gap(8),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: CustomSvgbutton(
+                            imgPath: StrolSvg.dropDownSvg,
+                            size: 10,
+                            onPressed: () {},
+                          ),
+                        )
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                      const  CustomPngIcon(imgPath: StrolSvg.timerPng),
+                       const Gap(5),
+                        Text('22h 00m',style: fontStyle.lightWhite.w600.s12,),
+                           const  Gap(8),
+                       const CustomPngIcon(imgPath: StrolSvg.userPng),
+                       const      Gap(5),
+                        Text('103',style: fontStyle.lightWhite.w600.s12,),
+                      ],
+                    )
+                  ],
+                ),
                 Positioned(
                   bottom: 0,
                   left: 0,
@@ -66,7 +123,6 @@ class HomeScreen extends StatelessWidget {
                         ),
                       )),
                 ),
-
                 Positioned(
                   bottom: 0,
                   left: 0,
@@ -166,7 +222,7 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.vertical,
                       children: controller.answrLit.map((value) {
                         return Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8),
                             child: CupertinoButton(
                               minSize: 0,
                               padding: EdgeInsets.zero,
@@ -192,10 +248,19 @@ class HomeScreen extends StatelessWidget {
                                         width: 20,
                                         height: 20,
                                         decoration: BoxDecoration(
+                                            color:
+                                                controller.getSelectedAnser ==
+                                                        value.id
+                                                    ? StrollColors.selectedColor
+                                                    : null,
                                             borderRadius:
                                                 BorderRadius.circular(13),
                                             border: Border.all(
-                                                color: StrollColors.lightWhite,
+                                                color: controller
+                                                            .getSelectedAnser ==
+                                                        value.id
+                                                    ? StrollColors.selectedColor
+                                                    : StrollColors.lightWhite,
                                                 width: 1.8)),
                                         child: Text(
                                           value.optionName,
@@ -214,7 +279,34 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ));
                       }).toList());
-                })
+                }),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          child: Text(
+                            'Pick your option.See who has a similar mind.',
+                            style: fontStyle.secondaryWhiteColor.s12.w400,
+                          )),
+                      Row(
+                        children: [
+                          CustomSvgbutton(
+                            imgPath: StrolSvg.micSvg,
+                            onPressed: () {},
+                          ),
+                          const Gap(5),
+                          CustomSvgbutton(
+                            imgPath: StrolSvg.rightArrowSvg,
+                            onPressed: () {},
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ))
